@@ -1,5 +1,5 @@
 {
-  "name": "elden-ring-routes",
+  "name": "elden-ring-appel-api",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.33.0",
+    "bootstrap": "^5.3.1",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
