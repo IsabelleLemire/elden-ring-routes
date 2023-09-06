@@ -3,19 +3,18 @@ import { config } from '../../config';
 class CreatureService {
     endpoint = "creatures";
     baseUrl = config.baseUrl;
-    creatureUrl = `${this.baseUrl}/${this.endpoint}`;
 
-    async getAllCreature() {
-        const res = await fetch(this.creatureUrl)
-        if (!res.ok) throw new Error();
-        const data = await res.json();
-        return data.data;
+    async getAllCreature(limit = 151, offset = 0) {
+        const response = await fetch(`${this.baseUrl}/${this.endpoint}?limit=${limit}&offset=${offset}`);
+        if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+        const data = await response.json();
+		return data.data;
     }
 
     async getCreatureById(id) {
-        const res = await fetch(`${this.creatureUrl}/${id}`)
-        if (!res.ok) throw new Error();
-        return await res.json();
+        const response = await fetch(`${this.baseUrl}/${this.endpoint}/${id}`)
+        if (!response.ok) throw new Error();
+        return await response.json();
     }
 }
 
