@@ -1,28 +1,26 @@
 import { useQuery } from "@tanstack/react-query";
+import { useParams } from 'react-router-dom'
 import CreatureService from "../service/CreatureService";
+import Container from 'react-bootstrap/Container';
 
 const creatureService = new CreatureService();
 
 const Creature = () => {
-
-    const { isError, isLoading, error, data} = useQuery({
-        queryKey: ["creature"],
-        queryFn: () => creatureService.getAllCreature(),
-    })
+    const params = useParams();
+    const { data, isLoading, isError, error } = useQuery(['creature', params.name], () => creatureService.getCreatureByName(params.name));
 
     if (isLoading || isError) return <div>Loading...</div>
     if (isError) return <div>{error.message}</div>
     
 
     return (
-        <div>{data && data.map(creature => {
-            return (
-                <div key={creature.name}>
-                    <h2>{creature.name}</h2>
-                    <p>{creature.description}</p>
+        <Container>
+            {data && (
+                <div className='d-flex flex-column gap-5'>
+                    <CreaturesList creature={data} />
                 </div>
-            )
-        })}</div>
+            )}
+        </Container>
     )
 };
 
