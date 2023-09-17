@@ -21,7 +21,7 @@ class CreatureService {
             throw new Error(`Failed to fetch creature by name: ${name}`);
         }
         const data = await res.json();
-        return data.creature; // Utilisez la propriété correcte ici, si elle est différente
+        return data.creature;
     }
 }
 

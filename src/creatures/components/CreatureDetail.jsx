@@ -1,9 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import CreatureService from '../service/CreatureService'; // Importez le service
+import CreatureService from '../service/CreatureService';
 
-const creatureService = new CreatureService(); // Créez une instance du service
+const creatureService = new CreatureService();
 
 function CreatureDetail() {
   const { name } = useParams();
@@ -21,7 +21,6 @@ function CreatureDetail() {
     <div>
       <h1>Creature Detail</h1>
       <h2>{data.name}</h2>
-      {/* Affichez ici les détails de la créature en utilisant les propriétés de "data" */}
     </div>
   );
 }
