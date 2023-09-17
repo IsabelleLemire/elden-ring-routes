@@ -9,7 +9,7 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Router> {/* Ceci est votre composant Router racine */}
+      <Router>
         <Routes>
           <Route path="/" element={<CreatureList />} />
           <Route path="/creature/:name" element={<CreatureDetail />} />
